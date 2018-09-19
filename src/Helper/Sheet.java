@@ -3,19 +3,20 @@ package Helper;
 import Heroes.Heroes;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Sheet {
 
-    private static String path = "C:\\Users\\dolanb\\Desktop\\Book1.csv";
+    private static String path = "sheets/Book1.csv";
+    static ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+    static File file = new File(classLoader.getResource(path).getFile());
 
     public static ArrayList<String> getHeroes() {
         ArrayList<String> heroes = new ArrayList<>();
         try {
-            BufferedReader heroesList = new BufferedReader(new FileReader(path));
+            BufferedReader heroesList = new BufferedReader(new FileReader(file));
             heroesList.readLine(); // skip headers
             for (int i = 0; i < 114; i++) { // TODO: Change 115 to be variable
                 String fullLine = heroesList.readLine();
@@ -31,7 +32,7 @@ public class Sheet {
     public static ArrayList<String> getHeroNames() {
         ArrayList<String> heroes = new ArrayList<>();
         try {
-            BufferedReader heroesList = new BufferedReader(new FileReader(path));
+            BufferedReader heroesList = new BufferedReader(new FileReader(file));
             heroesList.readLine(); // skip headers
             for (int i = 0; i < 114; i++) { // TODO: Change 115 to be variable
                 String fullLine = heroesList.readLine();
