@@ -1,8 +1,9 @@
 package Helper;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import Heroes.Heroes;
+
+import java.io.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -16,7 +17,7 @@ public class Sheet {
         try {
             BufferedReader heroesList = new BufferedReader(new FileReader(path));
             heroesList.readLine(); // skip headers
-            for (int i = 0; i < 115; i++) { // TODO: Change 115 to be variable
+            for (int i = 0; i < 114; i++) { // TODO: Change 115 to be variable
                 String fullLine = heroesList.readLine();
                 heroes.add(fullLine);
             }
@@ -32,7 +33,7 @@ public class Sheet {
         try {
             BufferedReader heroesList = new BufferedReader(new FileReader(path));
             heroesList.readLine(); // skip headers
-            for (int i = 0; i < 115; i++) { // TODO: Change 115 to be variable
+            for (int i = 0; i < 114; i++) { // TODO: Change 115 to be variable
                 String fullLine = heroesList.readLine();
                 Scanner heroLine = new Scanner(fullLine);
                 heroLine.useDelimiter(",");
@@ -100,5 +101,55 @@ public class Sheet {
             starCount += Integer.parseInt(split[stars]);
         }
         return starCount;
+    }
+
+    public static int getQuant(Heroes hero) {
+        int stars = hero.getStars();
+        String heroName = hero.getName();
+        ArrayList names = getHeroNames();
+        int index = names.indexOf(heroName);
+        String name = getHeroes().get(index);
+        String[] split = name.split(",");
+
+        return Integer.parseInt(split[stars]);
+    }
+
+    public static void setQuant(Heroes hero, int stars, int quant) {
+        ArrayList names = getHeroNames();
+        System.out.println(names);
+        String heroName = hero.getName();
+        int index = names.indexOf(heroName);
+
+        System.out.println(index);
+
+        ArrayList<String> heroesList = getHeroes();
+        String name = heroesList.get(index);
+
+        String[] split = name.split(",");
+        split[stars] = String.valueOf(quant);
+        System.out.println(split[stars]);
+        String combined = "";
+
+        for (int i = 0; i < split.length; i++) {
+            combined = combined.concat(split[i]);
+            if (i != split.length - 1) {
+                combined = combined.concat(",");
+            }
+        }
+
+        heroesList.set(index, combined);
+
+        System.out.println(combined);
+
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(path));
+            writer.write(" ,1,2,3,4,5,6,7,8,9,10,11,12,13\n");
+            for (String string : heroesList) {
+                writer.write(string + "\n");
+            }
+            writer.close();
+        } catch (IOException e) {
+            System.out.println(e.toString());
+        }
     }
 }

@@ -9,7 +9,7 @@ public class Heroes_SixStars {
     private static Faction light = new Faction("Light");
     private static Faction dark = new Faction("Dark");
 
-    public static Heroes Sigmund = new Heroes("Sigmund", fortress, 6, Heroes_FiveStars.Sigmund, Heroes_FiveStars.IronBambi, Heroes_FiveStars.FortressHolder_3, "heroes/Sigmund-6-icon.png");
+    public static Fodder FortressFodder = new Fodder(fortress, 6, "heroes/FortressHolder-3-icon.png");
 
     public static Heroes Mihm = new Heroes("Mihm", dark, 6, "heroes/Mihm-5-icon.png");
 }

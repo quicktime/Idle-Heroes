@@ -22,4 +22,6 @@ public class Faction {
         return Sheet.getStarCount(faction, 6);
     }
 
+    public static int getNinStarFodderQuant() { return Sheet.getStarCount(faction, 9); }
+
 }

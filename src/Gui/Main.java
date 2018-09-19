@@ -25,7 +25,7 @@ public class Main extends Application {
         GridPane infoPane = InfoPane.infoPane();
         GridPane lineupPane = LineupPane.lineupPane();
         GridPane bagPane = new GridPane();
-        GridPane factionsPane = new GridPane();
+        GridPane factionPane = FactionPane.factionPane();
 
         //root.setHgap(8);
         //root.setPadding(new Insets(5));
@@ -36,18 +36,20 @@ public class Main extends Application {
         RowConstraints infoRow = new RowConstraints();
         RowConstraints lineupRow = new RowConstraints();
         RowConstraints bagRow = new RowConstraints();
-        RowConstraints factionsRow = new RowConstraints();
+        RowConstraints factionRow = new RowConstraints();
 
         infoRow.setMaxHeight(100);
         lineupRow.setVgrow(Priority.ALWAYS);
         bagRow.setVgrow(Priority.ALWAYS);
-        factionsRow.setVgrow(Priority.ALWAYS);
+        factionRow.setVgrow(Priority.ALWAYS);
 
         root.getColumnConstraints().add(col);
-        root.getRowConstraints().addAll(infoRow, lineupRow, bagRow, factionsRow);
+        root.getRowConstraints().addAll(infoRow, lineupRow, bagRow, factionRow);
 
         root.getChildren().add(infoPane);
         root.add(lineupPane, 0, 1);
+        // root.add(bagPane, 0, 2);
+        root.add(factionPane, 0, 3);
 
         return new Scene(root, 900, 480);
     }

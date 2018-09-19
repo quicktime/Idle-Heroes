@@ -26,30 +26,59 @@ public class HeroPane {
 
         ImageView heroImage = new ImageView(hero.getImage());
         ImageView heroUpgrade = new ImageView(hero.getUpgrade().getImage());
+
         ImageView requirement1;
-        try {
-            requirement1 = new ImageView(hero.getRequirement1().getImage());
-        } catch (NullPointerException e) {
-            requirement1 = new ImageView(hero.getImage());
-        }
-        ImageView requirement2 = new ImageView(hero.getRequirement2().getImage());
-        ImageView requirement3 = new ImageView(hero.getRequirement3().getImage());
+        ImageView requirement2;
+        ImageView requirement3;
+        ImageView fodder1;
+        ImageView fodder2;
+
         ImageView arrow = new ImageView("http://png-1.findicons.com/files/icons/756/ginux/64/forward.png");
         ImageView arrow2 = new ImageView("http://png-1.findicons.com/files/icons/756/ginux/64/forward.png");
         ImageView plus = new ImageView("http://files.softicons.com/download/toolbar-icons/16x16-free-toolbar-icons-by-aha-soft/png/16/plus.png");
         ImageView plus2 = new ImageView("http://files.softicons.com/download/toolbar-icons/16x16-free-toolbar-icons-by-aha-soft/png/16/plus.png");
         ImageView plus3 = new ImageView("http://files.softicons.com/download/toolbar-icons/16x16-free-toolbar-icons-by-aha-soft/png/16/plus.png");
-        ImageView holder = new ImageView("http://files.softicons.com/download/toolbar-icons/vista-base-software-icons-2-by-icons-land/png/128x128/Box_Blue.png");
-        ImageView holder2 = new ImageView("http://files.softicons.com/download/toolbar-icons/vista-base-software-icons-2-by-icons-land/png/128x128/Box_Blue.png");
-        ImageView holder3 = new ImageView("http://files.softicons.com/download/toolbar-icons/vista-base-software-icons-2-by-icons-land/png/128x128/Box_Blue.png");
-        ImageView holder4 = new ImageView("http://files.softicons.com/download/toolbar-icons/vista-base-software-icons-2-by-icons-land/png/128x128/Box_Blue.png");
 
         ArrayList<ImageView> images = new ArrayList<>();
-        images.add(requirement1);
-        images.add(plus);
-        images.add(requirement2);
-        images.add(plus2);
-        images.add(requirement3);
+
+        try {
+            requirement1 = new ImageView(hero.getRequirement1().getImage());
+            images.add(requirement1);
+            images.add(plus);
+        } catch (NullPointerException e) {
+            System.out.println(e.toString());
+        }
+
+        try {
+            fodder1 = new ImageView(hero.getFodder1().getImage());
+            images.add(fodder1);
+            images.add(plus2);
+        } catch (NullPointerException e) {
+            System.out.println(e.toString());
+        }
+
+        try {
+            requirement2 = new ImageView(hero.getRequirement2().getImage());
+            images.add(requirement2);
+            images.add(plus3);
+        } catch (NullPointerException e) {
+            System.out.println(e.toString());
+        }
+
+        try {
+            fodder2 = new ImageView(hero.getFodder2().getImage());
+            images.add(fodder2);
+        } catch (NullPointerException e) {
+            System.out.println(e.toString());
+        }
+
+        try {
+            requirement3 = new ImageView(hero.getRequirement3().getImage());
+            images.add(requirement3);
+        } catch (NullPointerException e) {
+            System.out.println(e.toString());
+        }
+
 
         int stars = hero.getStars();
         Faction faction = hero.getFaction();

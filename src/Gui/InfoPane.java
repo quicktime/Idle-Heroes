@@ -1,7 +1,9 @@
 package Gui;
 
+import Helper.Sheet;
 import Heroes.FortressHeroes;
 import Heroes.HeroesAdapter;
+import Heroes.Heroes_FiveStars;
 import javafx.scene.control.Label;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
